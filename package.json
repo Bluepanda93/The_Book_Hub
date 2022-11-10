@@ -12,5 +12,23 @@
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.5"
-  }
+  },
+  "name": "the_book_hub",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bluepanda93/The_Book_Hub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bluepanda93/The_Book_Hub/issues"
+  },
+  "homepage": "https://github.com/Bluepanda93/The_Book_Hub#readme"
 }
