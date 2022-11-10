@@ -1,17 +1,27 @@
 # The_Book_Hub
+
+## Collaborators
+
+-Phillip Basnight
+-Daniel Shull
+-Jyotir McEwan-Anamoah
+-Jerry Chen
+
 ## Overview:
+
 ### In this project we will be creating a book review website where you can create a user and review a list of books. Any user can review multiple books and edit or delete their reviews.
 
 ![example](https://3.bp.blogspot.com/-wCDWKkAZbiQ/UCq8eHLucnI/AAAAAAAAL1U/I8ics_9DR4s/s200/goodreads.png)
 
 ## Objectives:
+
 - Create a log in page.
 - Create a place for you to review books.
 - Create a home page for you to see previous reviews.
 - be able to edit/delete reviews.
 
-
 ## Requirements:
+
 - Be setup in two new repos (one for backend, one for front end) with separate development branches for each group member.
 - Be a realistic idea. It cannot be anything we've created in class. It also cannot be from an online tutorial or walkthrough.
 - Include a beautiful, professional ReadMe.md (use markdown).
@@ -24,7 +34,7 @@
 - Your code should be properly indented, spaced, and within code blocks. DO NOT leave in commented out code that was left unused (bad practice).
 - Both repos deployed on Heroku.
 
-
 ### Citations:
+
 -Picture for example: https://3.bp.blogspot.com/-wCDWKkAZbiQ/UCq8eHLucnI/AAAAAAAAL1U/I8ics_9DR4s/s200/goodreads.png
 -Requirements: https://github.com/SEI-R-9-19/u3_project_prompt
