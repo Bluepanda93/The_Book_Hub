@@ -5,8 +5,8 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     let books = [...Array(5)].map((_) => ({
       title: falso.randBook().title,
-      body: falso.randParagraph(),
-      image: falso.randImg(),
+      author: falso.randParagraph(),
+      genre: falso.randImg(),
       createdAt: new Date(),
       updatedAt: new Date()
     }))
