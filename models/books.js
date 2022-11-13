@@ -1,6 +1,5 @@
 'use strict'
 const { Model } = require('sequelize')
-const username = require('./username')
 module.exports = (sequelize, DataTypes) => {
   class books extends Model {
     /**
@@ -10,16 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      books.belongsTo(models.booklist, {
-        as: 'singleBook',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      })
-      books.hasMany(models.username, {
-        as: 'username',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      })
+      books.belongsTo(models.booklist, { as: 'singleBook' })
     }
   }
   books.init(
