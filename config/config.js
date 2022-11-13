@@ -1,11 +1,11 @@
 require('dotenv').config()
 module.exports = {
   development: {
-    database: '<Your Dev Database>',
+    database: 'database_development',
     dialect: 'postgres'
   },
   test: {
-    database: '<Your Database Test Name>',
+    database: 'database_test',
     dialect: 'postgres'
   },
   production: {
