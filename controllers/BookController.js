@@ -23,7 +23,6 @@ const GetBookById = async (req, res) => {
 }
 
 const CreateBook = async (req, res) => {
-    console.log(req.body)
     try {
         const post = await Books.create({ ...req.body })
         res.send(post)
@@ -32,9 +31,20 @@ const CreateBook = async (req, res) => {
     }
 }
 
+const DeleteBook = async (req, res) => {
+    console.log(req.body)
+    try {
+        let bookId = parseInt(req.params.book_id)
+        await Books.destroy({ where: { id: bookId } })
+        res.send({ message: 'Book Deleted' })
+    } catch (error) {
+        throw error
+    }
+}
 
 module.exports = {
     GetBooks,
     GetBookById,
-    CreateBook
+    CreateBook,
+    DeleteBook
 }
