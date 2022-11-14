@@ -10,15 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Books.belongsTo(models.Booklist, {
-        as: 'singleBook',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-      })
-      Books.hasMany(models.Username, {
-        as: 'username',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+      Books.belongsToMany(models.Username, {
+        foreignKey: 'userId',
+        through: models.Booklist
       })
     }
   }
