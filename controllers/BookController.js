@@ -42,9 +42,22 @@ const DeleteBook = async (req, res) => {
     }
 }
 
+const UpdateBook = async (req, res) => {
+    try {
+        let bookId = parseInt(req.params.book_id)
+        let updatedBook = await Books.update(req.body, {
+            where: { id: bookId },
+            returning: true
+        })
+        res.send(updatedBook)
+    } catch (error) {
+        throw error
+    }
+}
 module.exports = {
     GetBooks,
     GetBookById,
     CreateBook,
-    DeleteBook
+    DeleteBook,
+    UpdateBook
 }
