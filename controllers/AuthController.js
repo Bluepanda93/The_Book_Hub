@@ -59,9 +59,19 @@ const CheckSession = async (req, res) => {
   res.send(payload)
 }
 
+const GetUsers = async (req, res) => {
+  try {
+    const allUsers = await Username.findAll({ order: [['createdAt', 'DESC']] })
+    res.send(allUsers)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   Login,
   Register,
   UpdatePassword,
-  CheckSession
+  CheckSession,
+  GetUsers
 }
