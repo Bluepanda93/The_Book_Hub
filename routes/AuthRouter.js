@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const controller = require('../controllers/AuthController')
 const middleware = require('../middleware')
+// const controller = require('../controllers/UserController')
 
 router.post('/login', controller.Login)
 router.post('/register', controller.Register)
@@ -16,5 +17,7 @@ router.get(
   middleware.verifyToken,
   controller.CheckSession
 )
+
+router.get('/allusers', controller.GetUsers)
 
 module.exports = router
