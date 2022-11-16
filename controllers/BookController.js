@@ -1,4 +1,4 @@
-const { Books, booklist } = require('../models')
+const { Books, Booklist } = require('../models')
 const { Op, literal, fn, col } = require('sequelize')
 
 const GetBooks = async (req, res) => {
@@ -51,10 +51,20 @@ const UpdateBook = async (req, res) => {
     throw error
   }
 }
+
+const GetMyBooksById = async (req, res) => {
+  try {
+    const GetMyBooksById = await Booklist.findAll(req.params.book_id, req.params.user_id)
+    res.send(GetMyBooksById)
+  } catch (error) {
+    throw error
+  }
+}
 module.exports = {
   GetBooks,
   GetBookById,
   CreateBook,
   DeleteBook,
-  UpdateBook
+  UpdateBook,
+  GetMyBooksById
 }
