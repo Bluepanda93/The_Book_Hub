@@ -2,14 +2,16 @@ const { Username } = require('../models')
 const middleware = require('../middleware')
 
 const Login = async (req, res) => {
+  console.log(req.body)
   try {
     const user = await Username.findOne({
       where: { email: req.body.email },
       raw: true
     })
+    console.log(user)
     if (
       user &&
-      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+      (await middleware.comparePassword(user.password, req.body.password))
     ) {
       let payload = {
         id: user.id,
@@ -28,7 +30,8 @@ const Register = async (req, res) => {
   try {
     const { email, password, name } = req.body
     let passwordDigest = await middleware.hashPassword(password)
-    const user = await Username.create({ email, passwordDigest, name })
+    const user = await Username.create({ email, password: passwordDigest, name })
+    console.log(user)
     res.send(user)
   } catch (error) {
     throw error
@@ -42,7 +45,7 @@ const UpdatePassword = async (req, res) => {
     if (
       user &&
       (await middleware.comparePassword(
-        user.dataValues.passwordDigest,
+        user.dataValues.password,
         oldPassword
       ))
     ) {
@@ -51,7 +54,7 @@ const UpdatePassword = async (req, res) => {
       return res.send({ status: 'Ok', payload: user })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-  } catch (error) {}
+  } catch (error) { }
 }
 
 const CheckSession = async (req, res) => {
