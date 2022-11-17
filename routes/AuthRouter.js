@@ -19,5 +19,6 @@ router.get(
 )
 
 router.get('/allusers', controller.GetUsers)
+router.get('/:user_id', controller.GetOneUser)
 
 module.exports = router
