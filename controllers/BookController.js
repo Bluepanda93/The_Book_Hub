@@ -33,7 +33,7 @@ const CreateMyBook = async (req, res) => {
     const post = await Booklist.create({
       ...req.body
     })
-    console.log(req.body)
+    console.log('this', req.body)
     res.send(post)
   } catch (error) {
     throw error
