@@ -28,6 +28,18 @@ const CreateBook = async (req, res) => {
   }
 }
 
+const CreateMyBook = async (req, res) => {
+  try {
+    const post = await Booklist.create({
+      ...req.body
+    })
+    console.log(req.body)
+    res.send(post)
+  } catch (error) {
+    throw error
+  }
+}
+
 const DeleteBook = async (req, res) => {
   console.log(req.body)
   try {
@@ -54,7 +66,10 @@ const UpdateBook = async (req, res) => {
 
 const GetMyBooksById = async (req, res) => {
   try {
-    const GetMyBooksById = await Booklist.findAll(req.params.book_id, req.params.user_id)
+    const GetMyBooksById = await Booklist.findAll(
+      req.params.book_id,
+      req.params.user_id
+    )
     res.send(GetMyBooksById)
   } catch (error) {
     throw error
@@ -66,5 +81,6 @@ module.exports = {
   CreateBook,
   DeleteBook,
   UpdateBook,
-  GetMyBooksById
+  GetMyBooksById,
+  CreateMyBook
 }

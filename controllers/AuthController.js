@@ -30,7 +30,11 @@ const Register = async (req, res) => {
   try {
     const { email, password, name } = req.body
     let passwordDigest = await middleware.hashPassword(password)
-    const user = await Username.create({ email, password: passwordDigest, name })
+    const user = await Username.create({
+      email,
+      password: passwordDigest,
+      name
+    })
     console.log(user)
     res.send(user)
   } catch (error) {
@@ -44,17 +48,14 @@ const UpdatePassword = async (req, res) => {
     const user = await Username.findByPk(req.params.user_id)
     if (
       user &&
-      (await middleware.comparePassword(
-        user.dataValues.password,
-        oldPassword
-      ))
+      (await middleware.comparePassword(user.dataValues.password, oldPassword))
     ) {
       let passwordDigest = await middleware.hashPassword(newPassword)
       await user.update({ passwordDigest })
       return res.send({ status: 'Ok', payload: user })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-  } catch (error) { }
+  } catch (error) {}
 }
 
 const CheckSession = async (req, res) => {
@@ -71,10 +72,20 @@ const GetUsers = async (req, res) => {
   }
 }
 
+const GetOneUser = async (req, res) => {
+  try {
+    const oneUser = await Username.findByPk(req.params.user_id)
+    res.send(oneUser)
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   Login,
   Register,
   UpdatePassword,
   CheckSession,
-  GetUsers
+  GetUsers,
+  GetOneUser
 }
